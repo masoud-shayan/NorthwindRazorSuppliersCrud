@@ -1,0 +1,53 @@
+﻿@page
+@model NorthwindWeb.Pages.SuppliersModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h1 class="display-2">Suppliers</h1>
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Company Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (string name in Model.Suppliers)
+        {
+            <tr>
+                <td>@name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @Model.SuppliersCount
+</div>
+
+<div class="row">
+    <p>Enter a name for a new supplier:</p><br/>
+    <form method="POST">
+        <div>
+
+            
+            <input asp-for="Supplier.CompanyName"/>
+            <input type="hidden" name="methodName" value="Post"/>
+
+
+        </div>
+        <input type="submit"/>
+
+    </form>
+</div>
+
+<div class="row">
+    <p>do you want to delete a supplier from the above list ?</p><br/>
+    <p>Enter a name of that supplier:</p><br/>
+    <form method="POST">
+        <div>
+
+            <input asp-for="Supplier.CompanyName"/>
+            <input type="hidden" name="methodName" value="Delete"/>
+
+        </div>
+        <input type="submit"/>
+
+    </form>
+</div>
